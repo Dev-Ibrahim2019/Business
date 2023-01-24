@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Mail;
+
+use Illuminate\Mail\Mailable;
+
+class ContactUs extends Mailable
+{
+    public $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    public function build()
+    {
+        return $this->from('no-reply@codeacademey.com')
+                    ->subject('Contact Us')
+                    ->view('emails.contact')
+                    ->with('data', $this->data);
+    }
+}
